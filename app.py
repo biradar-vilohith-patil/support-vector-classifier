@@ -157,46 +157,84 @@ else:
     st.dataframe(df_model.head())
 
 
-#Step 6 : Train SVM
+# Step 6 : Train SVM
 
-st.header("Step 6 : train SVM")
-log("Step 6 started ")
+st.header("Step 6 : Train SVM")
+log("Step 6 Started : SVM TRaining")
 
-tar = st.selectbox("Select target Columns",["species"])
-y=df_model[tar]
+target = st.selectbox("select Target Column", df_model.columns)
+
+y = df_model[target]
+
 if y.dtype == "object":
-    y=LabelEncoder().fit_transform(y)
-    log("Target column encoded")
+    y = LabelEncoder().fit_transform(y)
+    log("Target columns encoded")
 
-#Select numeric features only
+#select numeric features only
 
-x=df_model.drop(columns=[tar])
-x=x.select_dtypes(include = np.number)
+x = df_model.drop(columns = [target])
+x = x.select_dtypes(include = np.number)
 
 if x.empty:
-    st.error("No numeric features available for training")
+    st.error("No Numeric features available for the training..")
     st.stop()
 
+#scale features
 
-#Scale Features
 scaler = StandardScaler()
-x= scaler.fit_transform(x)
+X = scaler.fit_transform(x)
 
-x_train , x_test , y_train , y_test = train_test_split(x,y, test_size = 0.25 , random_state = 42)
+#train - test split
 
+x_train, x_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.25)
 
-model = SVC(kernel=kernel)
-model.fit(x_train,y_train)
+# training 
+model_type = st.selectbox("Select Model", ["Classifer", "Regression"])
 
-#Evaluation metrics
-y_pred = model.predict(x_test)
-acc = accuracy_score(y_test, y_pred)
+if model_type == "Classifer":
+    model = SVC(kernel=kernel, C=C, gamma=gamma)
+    model.fit(x_train,y_train)
+else:
+    model = SVR(kernel=kernel, C=C, gamma=gamma)
+    model.fit(x_train,y_train)
 
-st.success(f"Accuracy : {acc:.2f}")
-log(f"SVM trained succesfully | Accuracy = {acc : .2f}")
+#evaluate
 
-cm = confusion_matrix(y_test,y_pred)
-fig,ax = plt.subplots()
-sns.heatmap(cm , annot =True , fmt = "d" , cmap="Blues" ,ax=ax)
-st.pyplot(fig)
+if model_type == "Classifer":
+    y_pred = model.predict(x_test)
+    acc = accuracy_score(y_test, y_pred)
 
+    st.success(f"Accuracy : {acc:.2f}")
+    log(f"SVM training successfully | Accuracy = {acc : .2f}")
+
+    cm = confusion_matrix(y_test, y_pred)
+
+    fig, ax = plt.subplots()
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=ax)
+    st.pyplot(fig)
+else:
+    y_pred = model.predict(x_test)
+
+    # Evaluation metrics
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mse)
+    mae = mean_absolute_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+
+    st.success(f"R² Score : {r2:.2f}")
+    st.write(f"MAE : {mae:.2f}")
+    st.write(f"MSE : {mse:.2f}")
+    st.write(f"RMSE : {rmse:.2f}")
+
+    log(f"SVR training successfully | R² = {r2:.2f}, RMSE = {rmse:.2f}")
+
+    # Plot: Actual vs Predicted
+    fig, ax = plt.subplots()
+    ax.scatter(y_test, y_pred, alpha=0.7, color="blue")
+    ax.plot([y_test.min(), y_test.max()],
+            [y_test.min(), y_test.max()],
+            "r--", lw=2)  # diagonal line
+    ax.set_xlabel("Actual Values")
+    ax.set_ylabel("Predicted Values")
+    ax.set_title("SVR: Actual vs Predicted")
+    st.pyplot(fig)
