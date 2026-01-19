@@ -10,7 +10,7 @@ import os
 from datetime import datetime
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler,LabelEncoder
-from sklearn.metrics import accuracy_score , confusion_matrix
+from sklearn.metrics import accuracy_score , confusion_matrix , mean_absolute_error,mean_squared_error,r2_score
 import requests
 
 
@@ -195,7 +195,7 @@ if model_type == "Classifer":
     model = SVC(kernel=kernel, C=C, gamma=gamma)
     model.fit(x_train,y_train)
 else:
-    model = SVR(kernel=kernel, C=C, gamma=gamma)
+    model = SVC(kernel=kernel, C=C, gamma=gamma)
     model.fit(x_train,y_train)
 
 #evaluate
