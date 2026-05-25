@@ -12,7 +12,7 @@ with open('style.css') as f:
 # Load model and scaler
 @st.cache_resource
 def load_artifacts():
-    with open('svc_model.pkl', 'rb') as m, open('svc_scaler.pkl', 'rb') as s:
+    with open(r'C:\Users\DELL\Desktop\svc\models\svc_model.pkl', 'rb') as m, open(r'C:\Users\DELL\Desktop\svc\models\svc_scaler.pkl', 'rb') as s:
         return pickle.load(m), pickle.load(s)
 
 model, scaler = load_artifacts()
