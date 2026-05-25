@@ -9,10 +9,10 @@ st.set_page_config(page_title="Mobile Tier Predictor", page_icon="📱")
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Load model and scaler
 @st.cache_resource
 def load_artifacts():
-    with open(r'C:\Users\DELL\Desktop\svc\models\svc_model.pkl', 'rb') as m, open(r'C:\Users\DELL\Desktop\svc\models\svc_scaler.pkl', 'rb') as s:
+    # Assuming your 'models' folder is in the same directory as app.py
+    with open('models/svc_model.pkl', 'rb') as m, open('models/svc_scaler.pkl', 'rb') as s:
         return pickle.load(m), pickle.load(s)
 
 model, scaler = load_artifacts()
