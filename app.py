@@ -12,12 +12,26 @@ with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Load Artifacts & Data
+import os
+
 @st.cache_resource
 def load_assets():
-    with open('models/svc_model.pkl', 'rb') as m, open('models/svc_scaler.pkl', 'rb') as s:
+    # 1. Get the absolute path to the directory where app.py is located
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    # 2. Safely join that base directory with your folders and files
+    model_path = os.path.join(BASE_DIR, 'models', 'svc_model.pkl')
+    scaler_path = os.path.join(BASE_DIR, 'models', 'svc_scaler.pkl')
+    data_path = os.path.join(BASE_DIR, 'data', 'Social_Network_Ads.csv')
+    
+    # 3. Open using the dynamic absolute paths
+    with open(model_path, 'rb') as m, open(scaler_path, 'rb') as s:
         model, scaler = pickle.load(m), pickle.load(s)
-    data = pd.read_csv('data/Social_Network_Ads.csv')
+        
+    data = pd.read_csv(data_path)
+    
     return model, scaler, data
+
 
 model, scaler, df = load_assets()
 
