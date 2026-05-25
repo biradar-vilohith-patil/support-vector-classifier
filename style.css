@@ -1,71 +1,79 @@
-/* Global Font and Background Adjustments */
+/* Base styling */
 .stApp {
-    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: #f0f2f5;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Header Styling */
+/* Typography */
 h1 {
-    font-weight: 800;
-    color: #111827;
-    text-align: center;
-    padding-bottom: 0.5rem;
+    color: #1e293b;
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
-div[data-testid="stMarkdownContainer"] > p {
-    text-align: center;
-    color: #4b5563;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+h3 {
+    color: #334155;
+    font-weight: 700;
 }
 
-/* Slider Customization */
+/* Neumorphic Sliders */
 .stSlider {
-    padding-bottom: 1.5rem;
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05), -5px -5px 15px rgba(255,255,255,0.8);
+    margin-bottom: 20px;
 }
 
 div[data-baseweb="slider"] {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
-/* Modern Button Styling */
+/* Modern Pill Button */
 .stButton > button {
     width: 100%;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: #0f172a;
     color: white;
     border: none;
-    padding: 0.75rem;
-    border-radius: 12px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+    padding: 15px;
+    border-radius: 50px; /* Pill shape */
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.4);
 }
 
 .stButton > button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    transform: scale(1.02);
+    background: #1e293b;
     color: white;
 }
 
 .stButton > button:active {
-    transform: translateY(1px);
+    transform: scale(0.98);
 }
 
-/* Success Card Styling */
+/* Success & Error Alert Cards */
 .stSuccess {
-    background-color: #ffffff;
-    color: #1f2937;
-    border-left: 6px solid #10b981;
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    margin-top: 2rem;
+    background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0, 184, 148, 0.2);
 }
 
-.stSuccess h3 {
+.stError {
+    background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(214, 48, 49, 0.2);
+}
+
+/* Make text inside alerts white */
+.stSuccess h3, .stError h3, .stSuccess p, .stError p {
+    color: white !important;
     margin: 0;
-    color: #111827;
-    font-weight: 700;
 }
