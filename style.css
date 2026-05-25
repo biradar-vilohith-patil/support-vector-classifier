@@ -1,0 +1,71 @@
+/* Global Font and Background Adjustments */
+.stApp {
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Header Styling */
+h1 {
+    font-weight: 800;
+    color: #111827;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+div[data-testid="stMarkdownContainer"] > p {
+    text-align: center;
+    color: #4b5563;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Slider Customization */
+.stSlider {
+    padding-bottom: 1.5rem;
+}
+
+div[data-baseweb="slider"] {
+    margin-top: 10px;
+}
+
+/* Modern Button Styling */
+.stButton > button {
+    width: 100%;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    color: white;
+}
+
+.stButton > button:active {
+    transform: translateY(1px);
+}
+
+/* Success Card Styling */
+.stSuccess {
+    background-color: #ffffff;
+    color: #1f2937;
+    border-left: 6px solid #10b981;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+}
+
+.stSuccess h3 {
+    margin: 0;
+    color: #111827;
+    font-weight: 700;
+}
