@@ -1,79 +1,78 @@
-/* Base styling */
 .stApp {
-    background-color: #0f172a;
+    background-color: #0f111a; /* Deep dark space-gray */
     font-family: 'Inter', sans-serif;
 }
 
-/* Typography */
-h1 {
-    color: #1e293b;
+.stApp, .stApp p, .stApp label, .stMarkdown p {
+    color: #cbd5e1 !important; }
+
+
+    h1 {
+    color: #ffffff !important;
     font-weight: 900;
     letter-spacing: -1px;
-}
+               }
 
 h3 {
-    color: #334155;
+    color: #f8fafc !important;
     font-weight: 700;
-}
+        }
 
-/* Neumorphic Sliders */
 .stSlider {
-    background: #ffffff;
+    background: #1e293b;
     padding: 20px 25px;
     border-radius: 20px;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.05), -5px -5px 15px rgba(255,255,255,0.8);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6), -4px -4px 12px rgba(255, 255, 255, 0.04);
     margin-bottom: 20px;
-}
+                }
 
 div[data-baseweb="slider"] {
     margin-top: 15px;
 }
 
-/* Modern Pill Button */
 .stButton > button {
     width: 100%;
-    background: #0f172a;
-    color: white;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); 
+    color: #ffffff !important;
     border: none;
     padding: 15px;
-    border-radius: 50px; /* Pill shape */
+    border-radius: 50px; 
     font-size: 18px;
     font-weight: 700;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.4);
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
 }
 
 .stButton > button:hover {
     transform: scale(1.02);
-    background: #1e293b;
-    color: white;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: #ffffff !important;
+    box-shadow: 0 12px 30px -5px rgba(59, 130, 246, 0.6);
 }
 
 .stButton > button:active {
     transform: scale(0.98);
 }
 
-/* Success & Error Alert Cards */
 .stSuccess {
-    background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-    color: white;
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%); 
+    color: #ffffff !important;
     border-radius: 20px;
     border: none;
     padding: 25px;
-    box-shadow: 0 10px 20px rgba(0, 184, 148, 0.2);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
 }
 
 .stError {
-    background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
-    color: white;
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    color: #ffffff !important;
     border-radius: 20px;
     border: none;
     padding: 25px;
-    box-shadow: 0 10px 20px rgba(214, 48, 49, 0.2);
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
 }
 
-/* Make text inside alerts white */
 .stSuccess h3, .stError h3, .stSuccess p, .stError p {
-    color: white !important;
+    color: #ffffff !important;
     margin: 0;
 }
